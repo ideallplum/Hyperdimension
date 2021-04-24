@@ -16,7 +16,7 @@ namespace Hyperdimension
         protected bool isMoved = false;
 
         
-        public float X { get { return position.x; }set { position = new Vector3(value, position.y, position.z); isMoved = true; } }
+        public float X { get { return position.x; } set { position = new Vector3(value, position.y, position.z); isMoved = true; } }
 
         public float Y { get { return position.y; } set { position = new Vector3(position.x, value, position.z); isMoved = true; } }
 

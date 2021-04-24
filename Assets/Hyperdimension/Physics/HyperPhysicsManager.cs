@@ -28,9 +28,9 @@ namespace Hyperdimension
         
         
         public Vector2 ZoneCenter { get { return zoneCenter; } set { zoneCenter = value; } }
-        public int ZoneSizeX { get { return zoneSizeX; } set {zoneSizeX = value; } }
-        public int ZoneSizeY { get { return zoneSizeY; } set {zoneSizeY = value; } }
-        public float ZoneCellSize { get { return zoneCellSize; } set {zoneCellSize = value; } }
+        public int ZoneSizeX { get { return zoneSizeX; } set { zoneSizeX = value; } }
+        public int ZoneSizeY { get { return zoneSizeY; } set { zoneSizeY = value; } }
+        public float ZoneCellSize { get { return zoneCellSize; } set { zoneCellSize = value; } }
         
         public HyperZone Zone { get { return zone; } }
         public List<HyperBaseCollider> Colliders { get { return colliders; } }
