@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Hyperdimension
 {
-    public class Zone
+    public class HyperZone
     {
         float xOrigin;
         float yOrigin;
@@ -32,9 +32,9 @@ namespace Hyperdimension
         public int YSize { get { return ySize; } set { ySize = value; ResetZone(); } }
         public float ZoneCellSize { get { return zoneCellSize; } set { zoneCellSize = value; ResetZone(); } }
 
-        public List<List<ZoneCell>> zoneCells;
+        public List<List<HyperZoneCell>> zoneCells;
 
-        public Zone(float xCenter, float yCenter, int xSize, int ySize, float zoneCellSize)
+        public HyperZone(float xCenter, float yCenter, int xSize, int ySize, float zoneCellSize)
         {
             this.xSize = xSize;
             this.ySize = ySize;
@@ -50,14 +50,17 @@ namespace Hyperdimension
         }
 
 
-        public ZoneCell[] GetOverlappedZoneCells(float x, float y, float radius, ref int xIndex, ref int yIndex)
+        public HyperZoneCell[] GetOverlappedZoneCells(float x, float y, float radius, ref int xIndex, ref int yIndex)
         {
-            List<ZoneCell> overlappedZones = new List<ZoneCell>();
+            List<HyperZoneCell> overlappedZones = new List<HyperZoneCell>();
 
             xIndex = Mathf.FloorToInt((x - XOrigin) / ZoneCellSize);
             yIndex = Mathf.FloorToInt((y - YOrigin) / ZoneCellSize);
 
-            int zoneCount = 0;
+            if (xIndex < 0) xIndex = 0;
+            if (yIndex < 0) yIndex = 0;
+            if (xIndex >= xSize) xIndex = xSize - 1;
+            if (yIndex >= ySize) xIndex = ySize - 1;
 
             int extendCount = Mathf.CeilToInt(Mathf.Ceil(radius / (ZoneCellSize * 0.5f)) / 2f);
 
@@ -70,7 +73,6 @@ namespace Hyperdimension
 
                     if (zoneCells[j][k].IsInZone(x, y, radius))
                     {
-                        zoneCount++;
                         overlappedZones.Add(zoneCells[j][k]);
                     }
                 }
@@ -86,14 +88,14 @@ namespace Hyperdimension
             int xIndex = 0;
             int yIndex = 0;
 
-            ZoneCell[] zoneCells = GetOverlappedZoneCells(x, y, radius, ref xIndex, ref yIndex);
+            HyperZoneCell[] overlappedZoneCells = GetOverlappedZoneCells(x, y, radius, ref xIndex, ref yIndex);
 
-            for (int i = 0; i < zoneCells.Length; i++)
+            for (int i = 0; i < overlappedZoneCells.Length; i++)
             {
-                for (int j = 0; j < zoneCells[i].colliders.Count; j++)
+                for (int j = 0; j < overlappedZoneCells[i].colliders.Count; j++)
                 {
-                    if (!colliderList.Contains(zoneCells[i].colliders[j]))
-                        colliderList.Add(zoneCells[i].colliders[j]);
+                    if (!colliderList.Contains(overlappedZoneCells[i].colliders[j]))
+                        colliderList.Add(overlappedZoneCells[i].colliders[j]);
                 }
             }
 
@@ -102,21 +104,22 @@ namespace Hyperdimension
 
         void SetZone()
         {
-            zoneCells = new List<List<ZoneCell>>();
+            zoneCells = new List<List<HyperZoneCell>>();
 
             for (int i = 0; i < XSize; i++)
             {
-                zoneCells.Add(new List<ZoneCell>());
+                zoneCells.Add(new List<HyperZoneCell>());
 
                 for (int j = 0; j < YSize; j++)
                 {
-                    zoneCells[i].Add(new ZoneCell());
-                    Vector2[] zoneVertices = new Vector2[] { new Vector2(xOrigin + (i * zoneCellSize), yOrigin + (j * zoneCellSize)), new Vector2(xOrigin + ((i + 1) * zoneCellSize), yOrigin + (j * zoneCellSize)), new Vector2(xOrigin + ((i + 1) * zoneCellSize), yOrigin + ((j + 1) * zoneCellSize)), new Vector2(xOrigin + (i * zoneCellSize), yOrigin + ((j + 1) * zoneCellSize)) };
-                    zoneCells[i][j].x1 = zoneVertices[0].x;
-                    zoneCells[i][j].x2 = zoneVertices[1].x;
-                    zoneCells[i][j].y1 = zoneVertices[1].y;
-                    zoneCells[i][j].y2 = zoneVertices[2].y;
-                    zoneCells[i][j].vertices = zoneVertices;
+                    zoneCells[i].Add(new HyperZoneCell());
+                    zoneCells[i][j].Vertices = new Vector2[] 
+                        { 
+                            new Vector2(xOrigin + (i * zoneCellSize), yOrigin + (j * zoneCellSize)), 
+                            new Vector2(xOrigin + ((i + 1) * zoneCellSize), yOrigin + (j * zoneCellSize)), 
+                            new Vector2(xOrigin + ((i + 1) * zoneCellSize), yOrigin + ((j + 1) * zoneCellSize)), 
+                            new Vector2(xOrigin + (i * zoneCellSize), yOrigin + ((j + 1) * zoneCellSize)) 
+                        };
                 }
             }
         }

@@ -2,7 +2,7 @@
 
 namespace Hyperdimension
 {
-    [AddComponentMenu("Hyperdimension//Collider/Cylinder Collider")]
+    [AddComponentMenu("Hyperdimension/Collider/Cylinder Collider")]
     public class HyperCylinderCollider : HyperBaseCollider
     {
         [SerializeField]

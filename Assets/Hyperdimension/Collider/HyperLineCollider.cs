@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Hyperdimension
 {
-    [AddComponentMenu("Hyperdimension//Collider/Line Collider")]
+    [AddComponentMenu("Hyperdimension/Collider/Line Collider")]
     public class HyperLineCollider : HyperBaseCollider
     {
         float radius;
@@ -31,10 +31,7 @@ namespace Hyperdimension
 
         void SetRadius()
         {
-            if (from != null && to != null)
-            {
-                radius = (to - from).magnitude * 0.5f;
-            }
+            radius = (to - from).magnitude * 0.5f;
         }
     }
 }

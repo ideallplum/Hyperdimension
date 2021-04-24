@@ -1,0 +1,401 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.5f1 (8095aa901b9b) revision 8426922'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19041.928; Version 2004; 64bit' Language: 'ko' Physical Memory: 6092 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.5f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Neocat Studio/Documents/GitHub/Hyperdimension
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+10553
+Successfully changed project path to: C:/Users/Neocat Studio/Documents/GitHub/Hyperdimension
+C:/Users/Neocat Studio/Documents/GitHub/Hyperdimension
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 54.87 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.5f1 (8095aa901b9b)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Neocat Studio/Documents/GitHub/Hyperdimension/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon(TM) Vega 8 Graphics (ID=0x15dd)
+    Vendor:   
+    VRAM:     3046 MB
+    Driver:   27.20.1034.6
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56780
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004872 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 65.05 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.040 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001785 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 62.10 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.690 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1808 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.0 MB.
+System memory in use after: 84.9 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2250.
+Total: 2.928500 ms (FindLiveObjects: 0.281800 ms CreateObjectMapping: 0.072200 ms MarkObjects: 2.393200 ms  DeleteObjects: 0.179200 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Hyperdimension
+  artifactKey: Guid(c19cd2ab31608714fbf79c4eb3f049af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension using Guid(c19cd2ab31608714fbf79c4eb3f049af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f14c1aebef0ca7fbdee47ab61d55bfc') in 0.024940 seconds
+  Import took 0.029973 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.106043 seconds.
+  path: Assets/Hyperdimension/Transform
+  artifactKey: Guid(e5442d418c556d04ebd62d77ec672ff7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Transform using Guid(e5442d418c556d04ebd62d77ec672ff7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc8a229a3d024a86b9e97f9dde1d7dd6') in 0.026353 seconds
+  Import took 0.030842 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.652156 seconds.
+  path: Assets/Hyperdimension/Transform/HyperTransform.cs
+  artifactKey: Guid(931ae42b84f94d042ad88ab05a97f590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Transform/HyperTransform.cs using Guid(931ae42b84f94d042ad88ab05a97f590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '480126d1a8cd0cde306af2cc81310876') in 0.083900 seconds
+  Import took 0.089196 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001958 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.48 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.718 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1804 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.9 MB.
+System memory in use after: 84.9 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2255.
+Total: 4.543500 ms (FindLiveObjects: 0.503700 ms CreateObjectMapping: 0.232600 ms MarkObjects: 3.634400 ms  DeleteObjects: 0.169900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.010911 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.008 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1806 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.0 MB.
+System memory in use after: 85.0 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2261.
+Total: 2.971000 ms (FindLiveObjects: 0.237300 ms CreateObjectMapping: 0.050900 ms MarkObjects: 2.424600 ms  DeleteObjects: 0.255800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2441.540152 seconds.
+  path: Assets/Hyperdimension/Transform/HyperTransform.cs
+  artifactKey: Guid(931ae42b84f94d042ad88ab05a97f590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Transform/HyperTransform.cs using Guid(931ae42b84f94d042ad88ab05a97f590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be400195fa5d0e5ffc1340751dd3a795') in 0.012870 seconds
+  Import took 0.019405 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.026920 seconds.
+  path: Assets/Hyperdimension/Collider
+  artifactKey: Guid(745b563e994827a46864a16caa7c6127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Collider using Guid(745b563e994827a46864a16caa7c6127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3e9b7967bb71721f39c77289b95206d') in 0.038556 seconds
+  Import took 0.046424 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 46.060060 seconds.
+  path: Assets/Hyperdimension/Collider/HyperCollider.cs
+  artifactKey: Guid(34cf074b3e9a68b4a87c65ba13b851a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Collider/HyperCollider.cs using Guid(34cf074b3e9a68b4a87c65ba13b851a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'beef367177225bb7faac3688a01bea4d') in 0.036984 seconds
+  Import took 0.041945 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002082 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.65 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.749 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1807 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.1 MB.
+System memory in use after: 85.0 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2266.
+Total: 2.729800 ms (FindLiveObjects: 0.251600 ms CreateObjectMapping: 0.050300 ms MarkObjects: 2.254400 ms  DeleteObjects: 0.171500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002838 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.731 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1809 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.1 MB.
+System memory in use after: 85.1 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2272.
+Total: 2.380700 ms (FindLiveObjects: 0.253800 ms CreateObjectMapping: 0.050600 ms MarkObjects: 1.927100 ms  DeleteObjects: 0.147000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1654.415058 seconds.
+  path: Assets/Hyperdimension/Collider/HyperBaseCollider.cs
+  artifactKey: Guid(34cf074b3e9a68b4a87c65ba13b851a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Collider/HyperBaseCollider.cs using Guid(34cf074b3e9a68b4a87c65ba13b851a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f9f4d928923c960acd75ba13fabf54b') in 0.016705 seconds
+  Import took 0.020437 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.682124 seconds.
+  path: Assets/Hyperdimension/Core
+  artifactKey: Guid(474846a4344159943acb382cdfb24d07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Core using Guid(474846a4344159943acb382cdfb24d07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20fd6f9b132294f6fb2d308ed6f3aeb1') in 0.024400 seconds
+  Import took 0.031490 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.065973 seconds.
+  path: Assets/Hyperdimension/Core/Utility.cs
+  artifactKey: Guid(ddc8e6329ab055345af735eb852de978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Core/Utility.cs using Guid(ddc8e6329ab055345af735eb852de978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d0d46505853b1b5dcc4598060ec0cbc') in 0.041791 seconds
+  Import took 0.048575 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001688 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.658 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1810 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.2 MB.
+System memory in use after: 85.1 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2277.
+Total: 3.673600 ms (FindLiveObjects: 0.358700 ms CreateObjectMapping: 0.105200 ms MarkObjects: 3.041400 ms  DeleteObjects: 0.165400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001808 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.660 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1812 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.2 MB.
+System memory in use after: 85.2 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2283.
+Total: 5.728100 ms (FindLiveObjects: 0.248000 ms CreateObjectMapping: 0.056900 ms MarkObjects: 5.245500 ms  DeleteObjects: 0.175400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1620.169060 seconds.
+  path: Assets/Hyperdimension/Core/Utility.cs
+  artifactKey: Guid(ddc8e6329ab055345af735eb852de978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Core/Utility.cs using Guid(ddc8e6329ab055345af735eb852de978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d3c442040fba2553cc08e7fb795ac35') in 0.025310 seconds
+  Import took 0.030293 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.445072 seconds.
+  path: Assets/Hyperdimension/Settings.cs
+  artifactKey: Guid(939535d3d1c42524da9fdbe9d4aaecaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Settings.cs using Guid(939535d3d1c42524da9fdbe9d4aaecaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7808b9d08a89c13c91c471d5fbd567a2') in 0.113858 seconds
+  Import took 0.128179 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001900 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.786 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1813 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.2 MB.
+System memory in use after: 85.2 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2288.
+Total: 2.460300 ms (FindLiveObjects: 0.260200 ms CreateObjectMapping: 0.055700 ms MarkObjects: 1.992000 ms  DeleteObjects: 0.150700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001959 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.533 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.46 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1813 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.3 MB.
+System memory in use after: 85.2 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2292.
+Total: 2.647200 ms (FindLiveObjects: 0.256400 ms CreateObjectMapping: 0.062200 ms MarkObjects: 2.162900 ms  DeleteObjects: 0.164400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.277795 seconds.
+  path: Assets/Hyperdimension/Settings.cs
+  artifactKey: Guid(939535d3d1c42524da9fdbe9d4aaecaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Settings.cs using Guid(939535d3d1c42524da9fdbe9d4aaecaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf490bb4923de0fd1053f5966d7e0830') in 0.015356 seconds
+  Import took 0.020775 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.084545 seconds.
+  path: Assets/Hyperdimension/Core/Math.cs
+  artifactKey: Guid(8ac4fa1544b1a584b94b0edf97a42a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Core/Math.cs using Guid(8ac4fa1544b1a584b94b0edf97a42a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '924de4f11f7f9c935143d888ddf69b84') in 0.036974 seconds
+  Import took 0.043379 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002101 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.826 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1814 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.3 MB.
+System memory in use after: 85.3 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2297.
+Total: 2.784700 ms (FindLiveObjects: 0.307900 ms CreateObjectMapping: 0.059200 ms MarkObjects: 2.240800 ms  DeleteObjects: 0.175400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.065345 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.819 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1819 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.4 MB.
+System memory in use after: 85.4 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2306.
+Total: 2.959000 ms (FindLiveObjects: 0.258100 ms CreateObjectMapping: 0.057500 ms MarkObjects: 2.468100 ms  DeleteObjects: 0.172600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 2565.872394 seconds.
+  path: Assets/Hyperdimension/Core/Math.cs
+  artifactKey: Guid(8ac4fa1544b1a584b94b0edf97a42a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hyperdimension/Core/Math.cs using Guid(8ac4fa1544b1a584b94b0edf97a42a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ff1106da4da12638c80bfe0dbe6b5bf') in 0.024486 seconds
+  Import took 0.032716 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003780 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.592 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1819 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.4 MB.
+System memory in use after: 85.4 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2310.
+Total: 2.512200 ms (FindLiveObjects: 0.279700 ms CreateObjectMapping: 0.066300 ms MarkObjects: 2.005000 ms  DeleteObjects: 0.159700 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

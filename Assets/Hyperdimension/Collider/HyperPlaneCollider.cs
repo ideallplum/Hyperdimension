@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Hyperdimension
 {
-    [AddComponentMenu("Hyperdimension//Collider/Plane Collider")]
+    [AddComponentMenu("Hyperdimension/Collider/Plane Collider")]
     public class HyperPlaneCollider : HyperBaseCollider
     {
         float radius;
@@ -111,7 +111,7 @@ namespace Hyperdimension
         public float GetZValue(float x, float y)
         {
             Vector2 centerDirection = (new Vector2(HyperTransform.X, HyperTransform.Y) - new Vector2(x, y)).normalized;
-            centerDirection = centerDirection * 0.000001f;
+            centerDirection *= 0.000001f;
             x += centerDirection.x;
             y += centerDirection.y;
 
