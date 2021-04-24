@@ -60,7 +60,7 @@ namespace Hyperdimension
             if (xIndex < 0) xIndex = 0;
             if (yIndex < 0) yIndex = 0;
             if (xIndex >= xSize) xIndex = xSize - 1;
-            if (yIndex >= ySize) xIndex = ySize - 1;
+            if (yIndex >= ySize) yIndex = ySize - 1;
 
             int extendCount = Mathf.CeilToInt(Mathf.Ceil(radius / (ZoneCellSize * 0.5f)) / 2f);
 
