@@ -515,6 +515,42 @@ namespace Hyperdimension
             return false;
         }
 
+        public static bool ZRayCollide(float rayZ1, float rayZ2, float objZ, float objHeight, out float collideZ)
+        {
+            collideZ = rayZ1;
+            
+            float rayLow = rayZ1;
+            float rayHigh = rayZ2;
+                
+            if (rayZ1 > rayZ2)
+            {
+                rayHigh = rayZ1;
+                rayLow = rayZ2;
+            }
+
+            if (Math.IsCollideZ(rayLow, rayHigh - rayLow, objZ, objHeight))
+            {
+                if (rayZ1 < rayZ2)
+                {
+                    if (rayZ1 < objZ)
+                        collideZ = objZ;
+                    else
+                        collideZ = objZ + objHeight;
+                }
+                if (rayZ1 > rayZ2)
+                {
+                    if (rayZ1 > objZ + objHeight)
+                        collideZ = objZ + objHeight;
+                    else
+                        collideZ = objZ;
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
         #endregion
 
         #region Coordination Function

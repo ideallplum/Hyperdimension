@@ -30,6 +30,8 @@ namespace Hyperdimension
 
         void SetRadius()
         {
+            if (vertices == null) return;
+            
             float radius = 0f;
 
             for (int i = 0; i < Vertices.Length; i++)
@@ -46,6 +48,8 @@ namespace Hyperdimension
 
         public float GetLeastRadius()
         {
+            if (vertices == null) return 0f;
+            
             float radius = 0f;
 
             for (int i = 0; i < Vertices.Length; i++)

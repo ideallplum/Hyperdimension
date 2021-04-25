@@ -21,7 +21,7 @@ namespace Hyperdimension
 
         public override float Height { get { return height; } set { SetHeight(); } }
 
-        public Vector3[] Vertices { get { return vertices; } set { vertices = value; CheckNormal(); SetRadius(); } }
+        public Vector3[] Vertices { get { return vertices; } set { vertices = value; CheckNormal(); SetRadius(); SetHeight(); } }
 
         public bool IsSolid { get { return isSolid; } set { isSolid = value; } }
 
@@ -29,6 +29,8 @@ namespace Hyperdimension
         {
             get
             {
+                if (vertices == null) return false;
+                
                 for (int i = 0; i < Vertices.Length; i++)
                 {
                     if (Vertices[i].z != 0)
@@ -50,25 +52,26 @@ namespace Hyperdimension
 
         void CheckNormal()
         {
-            if (Vertices != null)
+            if (vertices == null) return;
+
+            if (Vertices.Length > 1)
             {
-                if (Vertices.Length > 1)
+                Vector3 normal = Vector3.Cross(Vertices[0], Vertices[1]);
+
+                if (normal.z < 0f)
                 {
-                    Vector3 normal = Vector3.Cross(Vertices[0], Vertices[1]);
+                    List<Vector3> tempList = new List<Vector3>(Vertices);
+                    tempList.Reverse();
 
-                    if (normal.z < 0f)
-                    {
-                        List<Vector3> tempList = new List<Vector3>(Vertices);
-                        tempList.Reverse();
-
-                        Vertices = tempList.ToArray();
-                    }
+                    Vertices = tempList.ToArray();
                 }
             }
         }
 
         public Vector2[] GetFlatPolygon()
         {
+            if (vertices == null) return null;
+
             List<Vector2> list = new List<Vector2>();
 
             for (int i = 0; i < Vertices.Length; i++)
@@ -81,6 +84,8 @@ namespace Hyperdimension
 
         public void SetHeight()
         {
+            if (vertices == null) return;
+            
             float height = 0f;
 
             for (int i = 0; i < Vertices.Length; i++)
@@ -94,6 +99,8 @@ namespace Hyperdimension
 
         public void SetRadius()
         {
+            if (vertices == null) return;
+            
             float radius = 0f;
 
             for (int i = 0; i < Vertices.Length; i++)
@@ -110,8 +117,10 @@ namespace Hyperdimension
 
         public float GetZValue(float x, float y)
         {
+            if (vertices == null) return 0f;
+            
             Vector2 centerDirection = (new Vector2(HyperTransform.X, HyperTransform.Y) - new Vector2(x, y)).normalized;
-            centerDirection *= 0.000001f;
+            centerDirection *= Settings.atomicSize;
             x += centerDirection.x;
             y += centerDirection.y;
 

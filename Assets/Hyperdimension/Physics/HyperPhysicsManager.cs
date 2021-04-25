@@ -107,6 +107,9 @@ namespace Hyperdimension
                 {
                     for (int k = 0; k < zone.zoneCells[i][j].colliders.Count; k++)
                     {
+                        if (!zone.zoneCells[i][j].colliders[k].isActiveAndEnabled)
+                            continue;
+
                         if (zone.zoneCells[i][j].colliders[k].IsFixed)
                             continue;
                         
@@ -120,10 +123,21 @@ namespace Hyperdimension
 
                             if (HyperPhysics.IsCollideWith(collider1, collider2))
                             {
-                                Vector2 delta = collider1.HyperTransform.Position - collider2.HyperTransform.Position;
-                                delta = delta.normalized * Time.fixedDeltaTime * collisionResolveFactor;
+                                if (collider2.GetType() == typeof(HyperPlaneCollider))
+                                {
+                                    HyperPlaneCollider planeCollider = (HyperPlaneCollider)collider2;
+                                    if (planeCollider.IsFlat && collider2.HyperTransform.Z == 0 && collider2.Height == 0)
+                                        continue;
 
-                                collider1.HyperTransform.Translate(delta);
+                                    collider1.HyperTransform.Z = planeCollider.GetZValue(collider1.HyperTransform.X, collider1.HyperTransform.Y);
+                                }
+                                else
+                                {
+                                    Vector2 delta = collider1.HyperTransform.Position - collider2.HyperTransform.Position;
+                                    delta = delta.normalized * Time.fixedDeltaTime * collisionResolveFactor;
+
+                                    collider1.HyperTransform.Translate(delta);
+                                }
                             }
                         }
                     }
