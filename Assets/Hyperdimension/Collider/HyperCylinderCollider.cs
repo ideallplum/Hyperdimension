@@ -15,5 +15,12 @@ namespace Hyperdimension
         public override float Radius { get { return radius; } set { radius = value; } }
 
         public override float Height { get { return height; } set { height = value; } }
+
+
+        protected override void Start()
+        {
+            if (height > 0f)
+                base.Start();
+        }
     }
 }

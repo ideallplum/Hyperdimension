@@ -14,7 +14,7 @@ namespace Hyperdimension
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        void Update()
+        private void Update()
         {
 #if UNITY_EDITOR
             isMoved = true;

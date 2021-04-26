@@ -28,8 +28,9 @@ namespace Hyperdimension
 
         public abstract float Height { get; set; }
 
-
-        private void Start()
+        
+        protected virtual void Awake() { }
+        protected virtual void Start()
         {
             HyperPhysicsManager physicsManager = FindObjectOfType<HyperPhysicsManager>();
             if (physicsManager != null)

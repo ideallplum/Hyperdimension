@@ -42,11 +42,19 @@ namespace Hyperdimension
         }
 
 
-        private void Awake()
+        protected override void Awake()
         {
             CheckNormal();
             SetRadius();
             SetHeight();
+            
+            base.Awake();
+        }
+
+        protected override void Start()
+        {
+            if (!IsFlat || HyperTransform.Z != 0f)
+                base.Start();
         }
 
 

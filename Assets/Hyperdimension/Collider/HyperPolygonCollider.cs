@@ -22,9 +22,17 @@ namespace Hyperdimension
         public Vector2[] Vertices { get { return vertices; } set { vertices = value; SetRadius(); } }
 
 
-        private void Awake()
+        protected override void Awake()
         {
             SetRadius();
+            
+            base.Awake();
+        }
+
+        protected override void Start()
+        {
+            if (height > 0f)
+                base.Start();
         }
 
 

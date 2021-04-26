@@ -566,6 +566,11 @@ namespace Hyperdimension
             return new Vector3(space.x * Settings.ratioX, space.y * Settings.ratioY + space.z * Settings.ratioZ, space.z);
         }
 
+        public static Vector3 ChangeYZ(Vector3 vector)
+        {
+            return new Vector3(vector.x, vector.z, vector.y);
+        }
+
         #endregion
 
         #region Transformation Function

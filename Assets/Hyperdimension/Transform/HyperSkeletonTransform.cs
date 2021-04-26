@@ -2,7 +2,7 @@
 
 namespace Hyperdimension
 {
-    [AddComponentMenu("Hyperdimension//Transform/Skeleton Transform")]
+    [AddComponentMenu("Hyperdimension/Transform/Skeleton Transform")]
     [RequireComponent(typeof(MeshRenderer))]
     [ExecuteInEditMode]
     public class HyperSkeletonTransform : HyperBaseTransform

@@ -150,10 +150,10 @@ namespace Hyperdimension
                 for (int i = 0; i < verticesRotated.Count; i++)
                     vertices3D.Add(new Vector3(verticesRotated[i].x, verticesRotated[i].y, hyperPlaneCollider.Vertices[i].z));
                 
-                //if (zRay && ray.Direction.z > 0f)
-                //    vertices3D.Reverse();
-                if (Vector3.Dot(Vector3.Cross(vertices3D[0], vertices3D[1]), ray.Direction) > 0f)
+                if (zRay && ray.Direction.z > 0f)
                     vertices3D.Reverse();
+                //if (Vector3.Dot(Vector3.Cross(vertices3D[0], vertices3D[1]), ray.Direction) > 0f)
+                //    vertices3D.Reverse();
                 
                 if (Math.FindPolygonLineIntersection3D(ray.From, ray.To, vertices3D.ToArray(), out intersection))
                 {
