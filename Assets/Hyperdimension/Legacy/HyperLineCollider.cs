@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿/*
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hyperdimension
@@ -36,3 +37,4 @@ namespace Hyperdimension
     }
 }
 
+*/

@@ -38,15 +38,31 @@ namespace Hyperdimension
             }
         }
 
-        public virtual bool Raycast(HyperRay ray)
+        public virtual bool RaycastToThis(HyperRay ray)
         {
             HyperRaycastHit raycastHit;
-            return Raycast(ray, out raycastHit);
+            return RaycastToThis(ray, out raycastHit);
         }
 
-        public virtual bool Raycast(HyperRay ray, out HyperRaycastHit raycastHit)
+        public virtual bool RaycastToThis(HyperRay ray, out HyperRaycastHit raycastHit)
         {
             return HyperPhysics.Raycast(ray, this, out raycastHit);
+        }
+        
+        public virtual bool RaycastFromThis(Vector3 direction, float maxDistance)
+        {
+            HyperRaycastHit raycastHit;
+            return RaycastFromThis(direction, maxDistance, out raycastHit);
+        }
+
+        public virtual bool RaycastFromThis(Vector3 direction, float maxDistance, out HyperRaycastHit raycastHit)
+        {
+            return HyperPhysics.Raycast(new HyperRay(this.HyperTransform.Position, direction, maxDistance), out raycastHit, exceptThis: this);
+        }
+        
+        public virtual bool IsCollideWith(HyperBaseCollider givenCollider)
+        {
+            return HyperPhysics.IsCollideWith(this, givenCollider);
         }
     }
 }

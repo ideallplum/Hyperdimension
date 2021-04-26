@@ -9,12 +9,12 @@ namespace Hyperdimension
         public static bool IsCollideWith(HyperBaseCollider collider1, HyperBaseCollider collider2)
         {
             bool collision = false;
-
-            if (Math.IsCollideZ(collider1.HyperTransform.Z, collider1.Height, collider2.HyperTransform.Z, collider2.Height))
+            
+            if (Math.IsCollideZ(collider1.HyperTransform.Z, collider1.Height, collider2.HyperTransform.Z, collider2.Height))// || (type1 == typeof(HyperLineCollider) || type2 == typeof(HyperLineCollider)))
             {
                 Type type1 = collider1.GetType();
                 Type type2 = collider2.GetType();
-
+                
                 if (type1 == typeof(HyperCylinderCollider) && type2 == typeof(HyperCylinderCollider))
                 {
                     HyperCylinderCollider hyperCylinderCollider1 = (HyperCylinderCollider)collider1;
@@ -42,7 +42,7 @@ namespace Hyperdimension
                 else if (type1 == typeof(HyperPlaneCollider))
                 {
                     HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider)collider1;
-                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), collider2.HyperTransform.X, collider2.HyperTransform.Y, Mathf.Epsilon))
+                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), collider2.HyperTransform.X, collider2.HyperTransform.Y, Settings.atomicSize))
                     {
                         collision = collider2.HyperTransform.Z <= hyperPlaneCollider.GetZValue(collider2.HyperTransform.X, collider2.HyperTransform.Y) ? true : false;
                     }
@@ -50,11 +50,12 @@ namespace Hyperdimension
                 else if (type2 == typeof(HyperPlaneCollider))
                 {
                     HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider)collider2;
-                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), collider1.HyperTransform.X, collider1.HyperTransform.Y, Mathf.Epsilon))
+                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), collider1.HyperTransform.X, collider1.HyperTransform.Y, Settings.atomicSize))
                     {
                         collision = collider1.HyperTransform.Z <= hyperPlaneCollider.GetZValue(collider1.HyperTransform.X, collider1.HyperTransform.Y) ? true : false;
                     }
                 }
+                /*
                 else if (type1 == typeof(HyperLineCollider))
                 {
                     HyperLineCollider hyperLineCollider = (HyperLineCollider)collider1;
@@ -75,6 +76,7 @@ namespace Hyperdimension
                         collision = true;
                     }
                 }
+                */
             }
 
             return collision;
@@ -83,7 +85,7 @@ namespace Hyperdimension
 
         public static bool Raycast(HyperRay ray, HyperBaseCollider collider, out HyperRaycastHit hyperRaycastHit)
         {
-            hyperRaycastHit = new HyperRaycastHit(null, -1f, Vector3.zero, null);
+            hyperRaycastHit = null;
 
             Type type = collider.GetType();
 
@@ -94,11 +96,13 @@ namespace Hyperdimension
 
             bool zRay = ray.Direction.x == 0f && ray.Direction.y == 0f;
 
+            /*
             if (type == typeof(HyperLineCollider))
             {
                 return false;
             }
-            else if (type == typeof(HyperCylinderCollider))
+            */
+            if (type == typeof(HyperCylinderCollider))
             {
                 HyperCylinderCollider hyperCylinderCollider = (HyperCylinderCollider)collider;
                 
@@ -184,10 +188,7 @@ namespace Hyperdimension
 
             if (result != 0 && result != 4 && realPoint.z >= collider.HyperTransform.Z && realPoint.z <= collider.HyperTransform.Z + collider.Height)
             {
-                hyperRaycastHit.collider = collider;
-                hyperRaycastHit.distance = (realPoint - ray.From).magnitude;
-                hyperRaycastHit.hyperTransform = collider.HyperTransform;
-                hyperRaycastHit.point = realPoint;
+                hyperRaycastHit = new HyperRaycastHit(collider, (realPoint - ray.From).magnitude, realPoint, collider.HyperTransform);
 
                 return true;
             }
@@ -198,16 +199,180 @@ namespace Hyperdimension
                 if (Math.ZRayCollide(ray.From.z, ray.To.z, collider.HyperTransform.Z, collider.Height, out realZ))
                 {
                     realPoint = new Vector3(ray.From.x, ray.From.y, realZ);
-                    hyperRaycastHit.collider = collider;
-                    hyperRaycastHit.distance = (realPoint - ray.From).magnitude;
-                    hyperRaycastHit.hyperTransform = collider.HyperTransform;
-                    hyperRaycastHit.point = realPoint;
+                    hyperRaycastHit = new HyperRaycastHit(collider, (realPoint - ray.From).magnitude, realPoint, collider.HyperTransform);
 
                     return true;
                 }
             }
 
             return false;
+        }
+
+
+        public static bool Raycast(HyperRay ray, out HyperRaycastHit raycastHit, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null)
+        {
+            raycastHit = null;
+
+            HyperBaseCollider[] colliders = GetValidColliders(ray.Center.x, ray.Center.y, ray.Radius);
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i] == exceptThis)
+                    continue;
+                
+                if (exceptThose != null)
+                    if (exceptThose.Contains(colliders[i]))
+                        continue;
+                
+                if (Raycast(ray, colliders[i], out raycastHit))
+                    return true;
+            }
+
+            return false;
+        }
+
+
+        public static bool RaycastAll(HyperRay ray, out HyperRaycastHit[] raycastHits, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null)
+        {
+            List<HyperRaycastHit> raycastHitsList = new List<HyperRaycastHit>();
+            bool returnValue = false;
+
+            HyperBaseCollider[] colliders = GetValidColliders(ray.Center.x, ray.Center.y, ray.Radius);
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i] == exceptThis)
+                    continue;
+                
+                if (exceptThose != null)
+                    if (exceptThose.Contains(colliders[i]))
+                        continue;
+                
+                HyperRaycastHit raycastHit;
+                
+                if (Raycast(ray, colliders[i], out raycastHit))
+                {
+                    returnValue = true;
+                    raycastHitsList.Add(raycastHit);
+                }
+            }
+            
+            raycastHits = raycastHitsList.ToArray();
+            
+            return returnValue;
+        }
+
+        public static bool CheckCylinder(float x, float y, float z, float radius, float height, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null)
+        {
+            HyperBaseCollider[] colliders = GetValidColliders(x, y, radius);
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i] == exceptThis)
+                    continue;
+                
+                if (exceptThose != null)
+                    if (exceptThose.Contains(colliders[i]))
+                        continue;
+                
+                bool collision = false;
+                
+                if (Math.IsCollideZ(z, height, colliders[i].HyperTransform.Z, colliders[i].Height))
+                {
+                    Type type = colliders[i].GetType();
+
+                    if (type == typeof(HyperCylinderCollider))
+                    {
+                        HyperCylinderCollider hyperCylinderCollider = (HyperCylinderCollider) colliders[i];
+                        collision = Math.CircleCircle(x, y, radius, hyperCylinderCollider.HyperTransform.X, hyperCylinderCollider.HyperTransform.Y, hyperCylinderCollider.Radius);
+                    }
+                    else if (type == typeof(HyperPolygonCollider))
+                    {
+                        HyperPolygonCollider hyperPolygonCollider = (HyperPolygonCollider) colliders[i];
+                        collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.HyperTransform.Angle), x, y, radius);
+                    }
+                    else if (type == typeof(HyperPlaneCollider))
+                    {
+                        HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider) colliders[i];
+                        if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), x, y, Settings.atomicSize))
+                        {
+                            collision = z <= hyperPlaneCollider.GetZValue(x, y) ? true : false;
+                        }
+                    }
+                }
+
+                if (collision) return true;
+            }
+
+            return false;
+        }
+        
+        public static HyperBaseCollider[] OverlapCylinder(float x, float y, float z, float radius, float height, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null)
+        {
+            HyperBaseCollider[] colliders = GetValidColliders(x, y, radius);
+            List<HyperBaseCollider> returnCollidersList = new List<HyperBaseCollider>();
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i] == exceptThis)
+                    continue;
+                
+                if (exceptThose != null)
+                    if (exceptThose.Contains(colliders[i]))
+                        continue;
+                
+                bool collision = false;
+                
+                if (Math.IsCollideZ(z, height, colliders[i].HyperTransform.Z, colliders[i].Height))
+                {
+                    Type type = colliders[i].GetType();
+
+                    if (type == typeof(HyperCylinderCollider))
+                    {
+                        HyperCylinderCollider hyperCylinderCollider = (HyperCylinderCollider) colliders[i];
+                        collision = Math.CircleCircle(x, y, radius, hyperCylinderCollider.HyperTransform.X, hyperCylinderCollider.HyperTransform.Y, hyperCylinderCollider.Radius);
+                    }
+                    else if (type == typeof(HyperPolygonCollider))
+                    {
+                        HyperPolygonCollider hyperPolygonCollider = (HyperPolygonCollider) colliders[i];
+                        collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.HyperTransform.Angle), x, y, radius);
+                    }
+                    else if (type == typeof(HyperPlaneCollider))
+                    {
+                        HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider) colliders[i];
+                        if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), x, y, Settings.atomicSize))
+                        {
+                            collision = z <= hyperPlaneCollider.GetZValue(x, y) ? true : false;
+                        }
+                    }
+                }
+
+                if (collision)
+                    returnCollidersList.Add(colliders[i]);
+            }
+
+            return returnCollidersList.ToArray();
+        }
+        
+        //public static bool CheckPolygon(Vector2[] vertices, float height, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null) { }
+        //public static bool CheckPlane(Vector3[] vertices, bool isSolid, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null) { }
+
+        public static HyperBaseCollider[] GetValidColliders(float x, float y, float radius)
+        {
+            HyperBaseCollider[] colliders;
+            
+            HyperPhysicsManager physicsManager = GameObject.FindObjectOfType<HyperPhysicsManager>();
+            HyperZone zone = null;
+
+            if (physicsManager != null)
+                zone = physicsManager.Zone;
+
+            if (zone != null)
+                colliders = zone.GetValidColliders(x, y, radius);
+            else
+                colliders = GameObject.FindObjectsOfType<HyperBaseCollider>();
+
+            return colliders;
         }
     }
 }

@@ -126,7 +126,7 @@ namespace Hyperdimension
 
             HyperRaycastHit raycastHit;
             HyperRay ray = new HyperRay(new Vector3(x, y, HyperTransform.Z + Height + 0.01f), new Vector3(x, y, HyperTransform.Z - 0.01f));
-            if (Raycast(ray, out raycastHit))
+            if (RaycastToThis(ray, out raycastHit))
                 return raycastHit.point.z;
 
             return 0f;
