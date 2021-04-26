@@ -94,6 +94,9 @@ namespace Hyperdimension
             {
                 for (int j = 0; j < overlappedZoneCells[i].colliders.Count; j++)
                 {
+                    if (overlappedZoneCells[i].colliders[j].isActiveAndEnabled == false)
+                        continue;
+                    
                     if (!colliderList.Contains(overlappedZoneCells[i].colliders[j]))
                         colliderList.Add(overlappedZoneCells[i].colliders[j]);
                 }

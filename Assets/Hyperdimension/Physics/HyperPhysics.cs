@@ -217,6 +217,9 @@ namespace Hyperdimension
 
             for (int i = 0; i < colliders.Length; i++)
             {
+                if (colliders[i].isActiveAndEnabled == false)
+                    continue;
+                
                 if (colliders[i] == exceptThis)
                     continue;
                 
@@ -241,6 +244,9 @@ namespace Hyperdimension
 
             for (int i = 0; i < colliders.Length; i++)
             {
+                if (colliders[i].isActiveAndEnabled == false)
+                    continue;
+                
                 if (colliders[i] == exceptThis)
                     continue;
                 
@@ -262,12 +268,16 @@ namespace Hyperdimension
             return returnValue;
         }
 
+        
         public static bool CheckCylinder(float x, float y, float z, float radius, float height, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null)
         {
             HyperBaseCollider[] colliders = GetValidColliders(x, y, radius);
 
             for (int i = 0; i < colliders.Length; i++)
             {
+                if (colliders[i].isActiveAndEnabled == false)
+                    continue;
+                
                 if (colliders[i] == exceptThis)
                     continue;
                 
@@ -307,6 +317,7 @@ namespace Hyperdimension
             return false;
         }
         
+        
         public static HyperBaseCollider[] OverlapCylinder(float x, float y, float z, float radius, float height, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null)
         {
             HyperBaseCollider[] colliders = GetValidColliders(x, y, radius);
@@ -314,6 +325,9 @@ namespace Hyperdimension
 
             for (int i = 0; i < colliders.Length; i++)
             {
+                if (colliders[i].isActiveAndEnabled == false)
+                    continue;
+                
                 if (colliders[i] == exceptThis)
                     continue;
                 
@@ -354,9 +368,11 @@ namespace Hyperdimension
             return returnCollidersList.ToArray();
         }
         
+        
         //public static bool CheckPolygon(Vector2[] vertices, float height, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null) { }
         //public static bool CheckPlane(Vector3[] vertices, bool isSolid, HyperBaseCollider exceptThis = null, List<HyperBaseCollider> exceptThose = null) { }
 
+        
         public static HyperBaseCollider[] GetValidColliders(float x, float y, float radius)
         {
             HyperBaseCollider[] colliders;
