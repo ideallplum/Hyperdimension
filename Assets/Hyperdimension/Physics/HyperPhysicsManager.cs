@@ -126,9 +126,6 @@ namespace Hyperdimension
                                 if (collider2.GetType() == typeof(HyperPlaneCollider))
                                 {
                                     HyperPlaneCollider planeCollider = (HyperPlaneCollider)collider2;
-                                    if (planeCollider.IsFlat && collider2.HyperTransform.Z == 0 && collider2.Height == 0)
-                                        continue;
-
                                     collider1.HyperTransform.Z = planeCollider.GetZValue(collider1.HyperTransform.X, collider1.HyperTransform.Y);
                                 }
                                 else
@@ -137,6 +134,9 @@ namespace Hyperdimension
                                     delta = delta.normalized * Time.fixedDeltaTime * collisionResolveFactor;
 
                                     collider1.HyperTransform.Translate(delta);
+                                    
+                                    if (!collider2.IsFixed)
+                                        collider2.HyperTransform.Translate(-delta);
                                 }
                             }
                         }
