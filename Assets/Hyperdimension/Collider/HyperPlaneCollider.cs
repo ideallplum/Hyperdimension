@@ -53,7 +53,7 @@ namespace Hyperdimension
 
         protected override void Start()
         {
-            if (!IsFlat || HyperTransform.Z != 0f)
+            if (!IsFlat || Z != 0f)
                 base.Start();
         }
 
@@ -127,13 +127,13 @@ namespace Hyperdimension
         {
             if (vertices == null) return 0f;
             
-            Vector2 centerDirection = (new Vector2(HyperTransform.X, HyperTransform.Y) - new Vector2(x, y)).normalized;
+            Vector2 centerDirection = (new Vector2(X, Y) - new Vector2(x, y)).normalized;
             centerDirection *= Settings.atomicSize;
             x += centerDirection.x;
             y += centerDirection.y;
 
             HyperRaycastHit raycastHit;
-            HyperRay ray = new HyperRay(new Vector3(x, y, HyperTransform.Z + Height + 0.01f), new Vector3(x, y, HyperTransform.Z - 0.01f));
+            HyperRay ray = new HyperRay(new Vector3(x, y, Z + Height + 0.01f), new Vector3(x, y, Z - 0.01f));
             if (RaycastToThis(ray, out raycastHit))
                 return raycastHit.point.z;
 

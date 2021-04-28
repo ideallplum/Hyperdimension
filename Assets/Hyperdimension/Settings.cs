@@ -7,7 +7,7 @@ namespace Hyperdimension
 {
     public class Settings
     {
-        public static readonly string version = "0.3a";
+        public static readonly string version = "0.4a";
         
         public static readonly float ratioX = 1f;
         public static readonly float ratioY = 0.5f;

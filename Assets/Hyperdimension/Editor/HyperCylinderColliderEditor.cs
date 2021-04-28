@@ -13,7 +13,7 @@ namespace Hyperdimension
             if (component == null)
                 return;
             
-            Vector3 center = Math.SpaceToWorld(component.HyperTransform.Position);
+            Vector3 center = Math.SpaceToWorld(component.Position);
             Vector3 normal = new Vector3(0f, Settings.ratioY + Settings.ratioY, Settings.ratioY);
             Vector3 height = Math.SpaceToWorld(Vector3.forward * component.Height);
             Vector3 left = center + Math.SpaceToWorld(Vector3.left * component.Radius);

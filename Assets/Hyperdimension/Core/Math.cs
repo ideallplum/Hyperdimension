@@ -583,14 +583,13 @@ namespace Hyperdimension
             return m.MultiplyPoint3x4(v);
         }
 
-        public static Vector2[] TransformedVertices(Vector2[] vertices, Vector2 centerPosition, float angle)
+        public static Vector2[] TransformedVertices(Vector2[] vertices, Vector2 centerPosition, Vector2 offset, float angle)
         {
             List<Vector2> list = new List<Vector2>();
 
             for (int i = 0; i < vertices.Length; i++)
             {
-                Vector2 pos = new Vector2(centerPosition.x, centerPosition.y);
-                list.Add(RotatedVertex(vertices[i], angle) + pos);
+                list.Add(RotatedVertex(vertices[i] + offset, angle) + centerPosition);
             }
 
             return list.ToArray();

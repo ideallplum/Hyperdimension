@@ -77,7 +77,7 @@ namespace Hyperdimension
                 int xIndex = 0;
                 int yIndex = 0;
 
-                HyperZoneCell[] overlappedZoneCells = zone.GetOverlappedZoneCells(colliders[i].HyperTransform.X, colliders[i].HyperTransform.Y, colliders[i].Radius, ref xIndex, ref yIndex);
+                HyperZoneCell[] overlappedZoneCells = zone.GetOverlappedZoneCells(colliders[i].X, colliders[i].Y, colliders[i].Radius, ref xIndex, ref yIndex);
                 
                 if (colliders[i].OverlappedZoneCells.Count != overlappedZoneCells.Length || colliders[i].CurrentZoneCell != zone.zoneCells[xIndex][yIndex])
                 {
@@ -126,11 +126,11 @@ namespace Hyperdimension
                                 if (collider2.GetType() == typeof(HyperPlaneCollider))
                                 {
                                     HyperPlaneCollider planeCollider = (HyperPlaneCollider)collider2;
-                                    collider1.HyperTransform.Z = planeCollider.GetZValue(collider1.HyperTransform.X, collider1.HyperTransform.Y);
+                                    collider1.Z = planeCollider.GetZValue(collider1.X, collider1.Y);
                                 }
                                 else
                                 {
-                                    Vector2 delta = collider1.HyperTransform.Position - collider2.HyperTransform.Position;
+                                    Vector2 delta = collider1.Position - collider2.Position;
                                     delta = delta.normalized * Time.fixedDeltaTime * collisionResolveFactor;
 
                                     collider1.HyperTransform.Translate(delta);

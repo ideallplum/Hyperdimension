@@ -10,7 +10,7 @@ namespace Hyperdimension
         {
             bool collision = false;
             
-            if (Math.IsCollideZ(collider1.HyperTransform.Z, collider1.Height, collider2.HyperTransform.Z, collider2.Height))// || (type1 == typeof(HyperLineCollider) || type2 == typeof(HyperLineCollider)))
+            if (Math.IsCollideZ(collider1.Z, collider1.Height, collider2.Z, collider2.Height))// || (type1 == typeof(HyperLineCollider) || type2 == typeof(HyperLineCollider)))
             {
                 Type type1 = collider1.GetType();
                 Type type2 = collider2.GetType();
@@ -19,40 +19,40 @@ namespace Hyperdimension
                 {
                     HyperCylinderCollider hyperCylinderCollider1 = (HyperCylinderCollider)collider1;
                     HyperCylinderCollider hyperCylinderCollider2 = (HyperCylinderCollider)collider2;
-                    collision = Math.CircleCircle(hyperCylinderCollider1.HyperTransform.X, hyperCylinderCollider1.HyperTransform.Y, hyperCylinderCollider1.Radius, hyperCylinderCollider2.HyperTransform.X, hyperCylinderCollider2.HyperTransform.Y, hyperCylinderCollider2.Radius);
+                    collision = Math.CircleCircle(hyperCylinderCollider1.X, hyperCylinderCollider1.Y, hyperCylinderCollider1.Radius, hyperCylinderCollider2.X, hyperCylinderCollider2.Y, hyperCylinderCollider2.Radius);
                 }
                 else if (type1 == typeof(HyperCylinderCollider) && type2 == typeof(HyperPolygonCollider))
                 {
                     HyperCylinderCollider hyperCylinderCollider1 = (HyperCylinderCollider)collider1;
                     HyperPolygonCollider hyperPolygonCollider2 = (HyperPolygonCollider)collider2;
-                    collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider2.Vertices, hyperPolygonCollider2.HyperTransform.Position, hyperPolygonCollider2.HyperTransform.Angle), hyperCylinderCollider1.HyperTransform.X, hyperCylinderCollider1.HyperTransform.Y, hyperCylinderCollider1.Radius);
+                    collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider2.Vertices, hyperPolygonCollider2.HyperTransform.Position, hyperPolygonCollider2.Offset, hyperPolygonCollider2.HyperTransform.Angle), hyperCylinderCollider1.X, hyperCylinderCollider1.Y, hyperCylinderCollider1.Radius);
                 }
                 else if (type1 == typeof(HyperPolygonCollider) && type2 == typeof(HyperCylinderCollider))
                 {
                     HyperCylinderCollider hyperCylinderCollider1 = (HyperCylinderCollider)collider2;
                     HyperPolygonCollider hyperPolygonCollider2 = (HyperPolygonCollider)collider1;
-                    collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider2.Vertices, hyperPolygonCollider2.HyperTransform.Position, hyperPolygonCollider2.HyperTransform.Angle), hyperCylinderCollider1.HyperTransform.X, hyperCylinderCollider1.HyperTransform.Y, hyperCylinderCollider1.Radius);
+                    collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider2.Vertices, hyperPolygonCollider2.HyperTransform.Position, hyperPolygonCollider2.Offset, hyperPolygonCollider2.HyperTransform.Angle), hyperCylinderCollider1.X, hyperCylinderCollider1.Y, hyperCylinderCollider1.Radius);
                 }
                 else if (type1 == typeof(HyperPolygonCollider) && type2 == typeof(HyperPolygonCollider))
                 {
                     HyperPolygonCollider hyperPolygonCollider1 = (HyperPolygonCollider)collider1;
                     HyperPolygonCollider hyperPolygonCollider2 = (HyperPolygonCollider)collider2;
-                    collision = Math.PolygonPolygon(Math.TransformedVertices(hyperPolygonCollider1.Vertices, hyperPolygonCollider1.HyperTransform.Position, hyperPolygonCollider1.HyperTransform.Angle), Math.TransformedVertices(hyperPolygonCollider2.Vertices, hyperPolygonCollider2.HyperTransform.Position, hyperPolygonCollider2.HyperTransform.Angle));
+                    collision = Math.PolygonPolygon(Math.TransformedVertices(hyperPolygonCollider1.Vertices, hyperPolygonCollider1.HyperTransform.Position, hyperPolygonCollider1.Offset, hyperPolygonCollider1.HyperTransform.Angle), Math.TransformedVertices(hyperPolygonCollider2.Vertices, hyperPolygonCollider2.HyperTransform.Position, hyperPolygonCollider2.Offset, hyperPolygonCollider2.HyperTransform.Angle));
                 }
                 else if (type1 == typeof(HyperPlaneCollider))
                 {
                     HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider)collider1;
-                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), collider2.HyperTransform.X, collider2.HyperTransform.Y, Settings.atomicSize))
+                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.Offset, hyperPlaneCollider.HyperTransform.Angle), collider2.X, collider2.Y, Settings.atomicSize))
                     {
-                        collision = collider2.HyperTransform.Z <= hyperPlaneCollider.GetZValue(collider2.HyperTransform.X, collider2.HyperTransform.Y) ? true : false;
+                        collision = collider2.Z <= hyperPlaneCollider.GetZValue(collider2.X, collider2.Y) ? true : false;
                     }
                 }
                 else if (type2 == typeof(HyperPlaneCollider))
                 {
                     HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider)collider2;
-                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), collider1.HyperTransform.X, collider1.HyperTransform.Y, Settings.atomicSize))
+                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.Offset, hyperPlaneCollider.HyperTransform.Angle), collider1.X, collider1.Y, Settings.atomicSize))
                     {
-                        collision = collider1.HyperTransform.Z <= hyperPlaneCollider.GetZValue(collider1.HyperTransform.X, collider1.HyperTransform.Y) ? true : false;
+                        collision = collider1.Z <= hyperPlaneCollider.GetZValue(collider1.X, collider1.Y) ? true : false;
                     }
                 }
                 /*
@@ -108,11 +108,11 @@ namespace Hyperdimension
                 
                 if (!zRay)
                 {
-                    result = Math.FindLineCircleIntersections(hyperCylinderCollider.HyperTransform.X, hyperCylinderCollider.HyperTransform.Y, hyperCylinderCollider.Radius, Vector3.ProjectOnPlane(ray.From, new Vector3(0f, 0f, 1f)), Vector3.ProjectOnPlane(ray.To, new Vector3(0f, 0f, 1f)), out interSection1, out interSection2);
+                    result = Math.FindLineCircleIntersections(hyperCylinderCollider.X, hyperCylinderCollider.Y, hyperCylinderCollider.Radius, Vector3.ProjectOnPlane(ray.From, new Vector3(0f, 0f, 1f)), Vector3.ProjectOnPlane(ray.To, new Vector3(0f, 0f, 1f)), out interSection1, out interSection2);
                 }
                 else
                 {
-                    if (Math.CircleCircle(ray.From.x, ray.From.y, Settings.atomicSize, hyperCylinderCollider.HyperTransform.X, hyperCylinderCollider.HyperTransform.Y, hyperCylinderCollider.Radius))
+                    if (Math.CircleCircle(ray.From.x, ray.From.y, Settings.atomicSize, hyperCylinderCollider.X, hyperCylinderCollider.Y, hyperCylinderCollider.Radius))
                         result = 4;
                 }
             }
@@ -122,11 +122,11 @@ namespace Hyperdimension
                 
                 if (!zRay)
                 {
-                    result = Math.FindPolygonLineIntersections(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.HyperTransform.Angle), ray.From.x, ray.From.y, ray.To.x, ray.To.y, out interSection1, out interSection2);
+                    result = Math.FindPolygonLineIntersections(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.Offset, hyperPolygonCollider.HyperTransform.Angle), ray.From.x, ray.From.y, ray.To.x, ray.To.y, out interSection1, out interSection2);
                 }
                 else
                 {
-                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.HyperTransform.Angle), ray.From.x, ray.From.y, Settings.atomicSize))
+                    if (Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.Offset, hyperPolygonCollider.HyperTransform.Angle), ray.From.x, ray.From.y, Settings.atomicSize))
                         result = 4;
                 }
             }
@@ -135,7 +135,7 @@ namespace Hyperdimension
                 HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider)collider;
 
                 if (hyperPlaneCollider.IsSolid)
-                    result = Math.FindPolygonLineIntersections(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), ray.From.x, ray.From.y, ray.To.x, ray.To.y, out interSection1, out interSection2);
+                    result = Math.FindPolygonLineIntersections(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.Offset, hyperPlaneCollider.HyperTransform.Angle), ray.From.x, ray.From.y, ray.To.x, ray.To.y, out interSection1, out interSection2);
 
                 Vector3 intersection;
 
@@ -146,7 +146,7 @@ namespace Hyperdimension
                 for (int i = 0; i < hyperPlaneCollider.Vertices.Length; i++)
                     vertices2D.Add(new Vector2(hyperPlaneCollider.Vertices[i].x, hyperPlaneCollider.Vertices[i].y));
 
-                verticesRotated.AddRange(Math.TransformedVertices(vertices2D.ToArray(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle));
+                verticesRotated.AddRange(Math.TransformedVertices(vertices2D.ToArray(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.Offset, hyperPlaneCollider.HyperTransform.Angle));
                 for (int i = 0; i < verticesRotated.Count; i++)
                     vertices3D.Add(new Vector3(verticesRotated[i].x, verticesRotated[i].y, hyperPlaneCollider.Vertices[i].z));
                 
@@ -186,7 +186,7 @@ namespace Hyperdimension
                 }
             }
 
-            if (result != 0 && result != 4 && realPoint.z >= collider.HyperTransform.Z && realPoint.z <= collider.HyperTransform.Z + collider.Height)
+            if (result != 0 && result != 4 && realPoint.z >= collider.Z && realPoint.z <= collider.Z + collider.Height)
             {
                 hyperRaycastHit = new HyperRaycastHit(collider, (realPoint - ray.From).magnitude, realPoint, collider.HyperTransform);
 
@@ -196,7 +196,7 @@ namespace Hyperdimension
             {
                 float realZ = 0f;
                 
-                if (Math.ZRayCollide(ray.From.z, ray.To.z, collider.HyperTransform.Z, collider.Height, out realZ))
+                if (Math.ZRayCollide(ray.From.z, ray.To.z, collider.Z, collider.Height, out realZ))
                 {
                     realPoint = new Vector3(ray.From.x, ray.From.y, realZ);
                     hyperRaycastHit = new HyperRaycastHit(collider, (realPoint - ray.From).magnitude, realPoint, collider.HyperTransform);
@@ -287,24 +287,24 @@ namespace Hyperdimension
                 
                 bool collision = false;
                 
-                if (Math.IsCollideZ(z, height, colliders[i].HyperTransform.Z, colliders[i].Height))
+                if (Math.IsCollideZ(z, height, colliders[i].Z, colliders[i].Height))
                 {
                     Type type = colliders[i].GetType();
 
                     if (type == typeof(HyperCylinderCollider))
                     {
                         HyperCylinderCollider hyperCylinderCollider = (HyperCylinderCollider) colliders[i];
-                        collision = Math.CircleCircle(x, y, radius, hyperCylinderCollider.HyperTransform.X, hyperCylinderCollider.HyperTransform.Y, hyperCylinderCollider.Radius);
+                        collision = Math.CircleCircle(x, y, radius, hyperCylinderCollider.X, hyperCylinderCollider.Y, hyperCylinderCollider.Radius);
                     }
                     else if (type == typeof(HyperPolygonCollider))
                     {
                         HyperPolygonCollider hyperPolygonCollider = (HyperPolygonCollider) colliders[i];
-                        collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.HyperTransform.Angle), x, y, radius);
+                        collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.Offset, hyperPolygonCollider.HyperTransform.Angle), x, y, radius);
                     }
                     else if (type == typeof(HyperPlaneCollider))
                     {
                         HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider) colliders[i];
-                        if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), x, y, Settings.atomicSize))
+                        if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.Offset, hyperPlaneCollider.HyperTransform.Angle), x, y, Settings.atomicSize))
                         {
                             collision = z <= hyperPlaneCollider.GetZValue(x, y) ? true : false;
                         }
@@ -337,24 +337,24 @@ namespace Hyperdimension
                 
                 bool collision = false;
                 
-                if (Math.IsCollideZ(z, height, colliders[i].HyperTransform.Z, colliders[i].Height))
+                if (Math.IsCollideZ(z, height, colliders[i].Z, colliders[i].Height))
                 {
                     Type type = colliders[i].GetType();
 
                     if (type == typeof(HyperCylinderCollider))
                     {
                         HyperCylinderCollider hyperCylinderCollider = (HyperCylinderCollider) colliders[i];
-                        collision = Math.CircleCircle(x, y, radius, hyperCylinderCollider.HyperTransform.X, hyperCylinderCollider.HyperTransform.Y, hyperCylinderCollider.Radius);
+                        collision = Math.CircleCircle(x, y, radius, hyperCylinderCollider.X, hyperCylinderCollider.Y, hyperCylinderCollider.Radius);
                     }
                     else if (type == typeof(HyperPolygonCollider))
                     {
                         HyperPolygonCollider hyperPolygonCollider = (HyperPolygonCollider) colliders[i];
-                        collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.HyperTransform.Angle), x, y, radius);
+                        collision = Math.PolygonCircle(Math.TransformedVertices(hyperPolygonCollider.Vertices, hyperPolygonCollider.HyperTransform.Position, hyperPolygonCollider.Offset, hyperPolygonCollider.HyperTransform.Angle), x, y, radius);
                     }
                     else if (type == typeof(HyperPlaneCollider))
                     {
                         HyperPlaneCollider hyperPlaneCollider = (HyperPlaneCollider) colliders[i];
-                        if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.HyperTransform.Angle), x, y, Settings.atomicSize))
+                        if (Math.PolygonCircle(Math.TransformedVertices(hyperPlaneCollider.GetFlatPolygon(), hyperPlaneCollider.HyperTransform.Position, hyperPlaneCollider.Offset, hyperPlaneCollider.HyperTransform.Angle), x, y, Settings.atomicSize))
                         {
                             collision = z <= hyperPlaneCollider.GetZValue(x, y) ? true : false;
                         }

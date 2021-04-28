@@ -14,7 +14,7 @@ namespace Hyperdimension
             if (component == null)
                 return;
 
-            Vector3 center = Math.SpaceToWorld(component.HyperTransform.Position);
+            Vector3 center = Math.SpaceToWorld(component.Position);
 
 
             if (component.Vertices == null)
@@ -29,10 +29,10 @@ namespace Hyperdimension
             for (int i = 0; i < component.Vertices.Length; i++)
                 vertices2D.Add(new Vector2(component.Vertices[i].x, component.Vertices[i].y));
 
-            verticesRotated.AddRange(Math.TransformedVertices(vertices2D.ToArray(), component.HyperTransform.Position, component.HyperTransform.Angle));
+            verticesRotated.AddRange(Math.TransformedVertices(vertices2D.ToArray(), component.HyperTransform.Position, component.Offset, component.HyperTransform.Angle));
             for (int i = 0; i < verticesRotated.Count; i++)
-                vertices3D.Add(Math.SpaceToWorld(new Vector3(verticesRotated[i].x, verticesRotated[i].y, component.Vertices[i].z)));
-            vertices3D.Add(Math.SpaceToWorld(new Vector3(verticesRotated[0].x, verticesRotated[0].y, component.Vertices[0].z)));
+                vertices3D.Add(Math.SpaceToWorld(new Vector3(verticesRotated[i].x, verticesRotated[i].y, component.Vertices[i].z + component.Z)));
+            vertices3D.Add(Math.SpaceToWorld(new Vector3(verticesRotated[0].x, verticesRotated[0].y, component.Vertices[0].z + component.Z)));
 
             if (vertices3D.Count == 0)
                 return;
