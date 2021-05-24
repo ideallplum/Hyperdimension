@@ -11,7 +11,7 @@ namespace Hyperdimension
         
         public static readonly float ratioX = 1f;
         public static readonly float ratioY = 0.5f;
-        public static readonly float ratioZ = 0.559f;
+        public static readonly float ratioZ = 0.866f;
 
         public static readonly int pixelsPerUnit = 100;
 
