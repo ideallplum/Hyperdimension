@@ -19,26 +19,26 @@ namespace Hyperdimension
         [SerializeField]
         int zoneSizeY = 100;
         [SerializeField]
-        float zoneCellSize = 2f;
+        float zoneCellSize = 6f;
 
-        [SerializeField] 
+        [SerializeField]
         bool collisionResolve = true;
         [SerializeField]
         float collisionResolveFactor = 1f;
-        
-        
+
+
         public Vector2 ZoneCenter { get { return zoneCenter; } set { zoneCenter = value; } }
         public int ZoneSizeX { get { return zoneSizeX; } set { zoneSizeX = value; } }
         public int ZoneSizeY { get { return zoneSizeY; } set { zoneSizeY = value; } }
         public float ZoneCellSize { get { return zoneCellSize; } set { zoneCellSize = value; } }
-        
+
         public HyperZone Zone { get { return zone; } }
         public List<HyperBaseCollider> Colliders { get { return colliders; } }
-        
+
         public bool CollisionResolve { get { return collisionResolve;} set { collisionResolve = value; } }
         public float CollisionResolveFactor { get { return collisionResolveFactor;} set { collisionResolveFactor = value; } }
-        
-        
+
+
         private void Awake()
         {
             zone = new HyperZone(zoneCenter.x, zoneCenter.y, zoneSizeX, zoneSizeY, zoneCellSize);
@@ -73,12 +73,12 @@ namespace Hyperdimension
 
                     continue;
                 }
-                
+
                 int xIndex = 0;
                 int yIndex = 0;
 
                 HyperZoneCell[] overlappedZoneCells = zone.GetOverlappedZoneCells(colliders[i].X, colliders[i].Y, colliders[i].Radius, ref xIndex, ref yIndex);
-                
+
                 if (colliders[i].OverlappedZoneCells.Count != overlappedZoneCells.Length || colliders[i].CurrentZoneCell != zone.zoneCells[xIndex][yIndex])
                 {
                     colliders[i].CurrentZoneCell = zone.zoneCells[xIndex][yIndex];
@@ -112,7 +112,7 @@ namespace Hyperdimension
 
                         if (zone.zoneCells[i][j].colliders[k].IsFixed)
                             continue;
-                        
+
                         for (int l = 0; l < zone.zoneCells[i][j].colliders.Count; l++)
                         {
                             if (k == l)
@@ -134,7 +134,7 @@ namespace Hyperdimension
                                     delta = delta.normalized * Time.fixedDeltaTime * collisionResolveFactor;
 
                                     collider1.HyperTransform.Translate(delta);
-                                    
+
                                     if (!collider2.IsFixed)
                                         collider2.HyperTransform.Translate(-delta);
                                 }
